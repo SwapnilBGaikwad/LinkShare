@@ -17,4 +17,11 @@ public class LinkTest {
         final Link link2 = new Link("test2");
         Assert.assertNotEquals(link1, link2);
     }
+
+    @Test
+    public void hashCodeShouldReturntrueIfIdentifierAreSame() {
+        final Link link1 = new Link("abcd");
+        final Link link2 = new Link("abcd");
+        Assert.assertEquals(link1.hashCode(), link2.hashCode());
+    }
 }
