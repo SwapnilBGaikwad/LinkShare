@@ -22,11 +22,10 @@ public class CredentialController {
         return service.add(credential);
     }
 
-    @GetMapping("/")
+    @GetMapping("/get")
     @ResponseBody
-    public Credential getCredential(String identifier) {
+    public Credential getCredential(@RequestParam("identifier") String identifier) {
         return service.get(identifier);
     }
-
 
 }

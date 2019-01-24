@@ -9,15 +9,28 @@ import java.util.Map;
 
 @Service
 public class CredentialService {
-    @Autowired
-    private Map<String,Credential> credentialMap;
+    private Map<String, Credential> credentialMap;
+    private RandomGenerator randomGenerator;
 
-    public Link add(Credential credential) {
-        return new Link("abcd" + credential);
+    @Autowired
+    CredentialService(RandomGenerator randomGenerator, Map<String, Credential> credentialMap) {
+        this.credentialMap = credentialMap;
+        this.randomGenerator = randomGenerator;
     }
 
+    public Link add(Credential credential) {
+        final String key = randomGenerator.get();
+        credentialMap.put(key, credential);
+        return new Link(key);
+    }
 
     public Credential get(String identifier) {
-        return new Credential("", "");
+        final Credential credential = credentialMap
+                .getOrDefault(identifier,Credential.getEmptyCredential());
+        if (credential.isEmpty()) {
+            return credential;
+        }
+        credentialMap.remove(identifier);
+        return credential;
     }
 }
