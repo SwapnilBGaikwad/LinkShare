@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Configuration
 @EnableAutoConfiguration
-public class BeanConfiguration {
+class BeanConfiguration {
     @Bean
     Map<String,Credential> getMap() {
         return new HashMap<>();
