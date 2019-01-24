@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/credential")
-public class CredentialController {
+class CredentialController {
     private CredentialService service;
 
     @Autowired
-    public CredentialController(CredentialService service) {
+    CredentialController(CredentialService service) {
         this.service = service;
     }
 
     @PostMapping("/create")
     @ResponseBody
-    public Link createLink(@RequestBody Credential credential) {
+    Link createLink(@RequestBody Credential credential) {
         return service.add(credential);
     }
 
     @GetMapping("/get")
     @ResponseBody
-    public Credential getCredential(@RequestParam("identifier") String identifier) {
+    Credential getCredential(@RequestParam("identifier") String identifier) {
         return service.get(identifier);
     }
 

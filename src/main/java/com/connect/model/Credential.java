@@ -29,14 +29,6 @@ public class Credential {
         return password;
     }
 
-    @Override
-    public String toString() {
-        return "Credential{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
-
     @JsonIgnore
     public boolean isEmpty() {
         return this == EMPTY_CREDENTIAL;
