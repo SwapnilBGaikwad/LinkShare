@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  LinkShare:
+    container_name: LinkShare
+    image: linkshare:1.0
+    ports:
+      - 8080:8080
+
