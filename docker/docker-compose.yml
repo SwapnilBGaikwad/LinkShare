@@ -6,4 +6,11 @@ services:
     image: linkshare:1.0
     ports:
       - 8080:8080
+    depends_on:
+      - redis
 
+  redis:
+    container_name: LSRedis
+    image: redis:latest
+    ports:
+      - 6379:6379
