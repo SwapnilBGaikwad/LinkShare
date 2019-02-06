@@ -2,35 +2,32 @@ package com.connect.service;
 
 import com.connect.model.Credential;
 import com.connect.model.Link;
+import com.connect.repository.CredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class CredentialService {
-    private Map<String, Credential> credentialMap;
+    private CredentialRepository repository;
     private RandomGenerator randomGenerator;
 
     @Autowired
-    CredentialService(RandomGenerator randomGenerator, Map<String, Credential> credentialMap) {
-        this.credentialMap = credentialMap;
+    CredentialService(CredentialRepository repository, RandomGenerator randomGenerator) {
+        this.repository = repository;
         this.randomGenerator = randomGenerator;
     }
 
     public Link add(Credential credential) {
         final String key = randomGenerator.get();
-        credentialMap.put(key, credential);
+        repository.add(key, credential);
         return new Link(key);
     }
 
     public Credential get(String identifier) {
-        final Credential credential = credentialMap
-                .getOrDefault(identifier,Credential.getEmptyCredential());
-        if (credential.isEmpty()) {
-            return credential;
-        }
-        credentialMap.remove(identifier);
-        return credential;
+        final Optional<Credential> credential = repository.get(identifier);
+        credential.ifPresent(value -> repository.remove(identifier));
+        return credential.orElse(Credential.getEmptyCredential());
     }
 }
