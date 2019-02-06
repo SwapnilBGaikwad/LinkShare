@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose run LinkShare
+docker-compose up LinkShare
