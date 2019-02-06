@@ -16,7 +16,7 @@ public class CredentialRepositoryImpl implements CredentialRepository {
     private HashOperations<String, String, Credential> hashOperations;
 
     @Autowired
-    public CredentialRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
+    CredentialRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 

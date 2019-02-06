@@ -1,6 +1,5 @@
 package com.connect.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -29,10 +28,5 @@ public class Credential implements Serializable {
 
     public String getPassword() {
         return password;
-    }
-
-    @JsonIgnore
-    public boolean isEmpty() {
-        return this == EMPTY_CREDENTIAL;
     }
 }
