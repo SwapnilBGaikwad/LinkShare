@@ -3,8 +3,10 @@ package com.connect.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 @Component
-public class Credential {
+public class Credential implements Serializable {
     private static final Credential EMPTY_CREDENTIAL = new Credential(null,null);
     private String userName;
     private String password;
