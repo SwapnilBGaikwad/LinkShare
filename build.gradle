@@ -43,7 +43,7 @@ jacocoTestReport {
 }
 
 dependencyCheck {
-    failBuildOnCVSS = 5
+    failBuildOnCVSS = 8
     failOnError = true
     analyzers {
         experimentalEnabled = true
