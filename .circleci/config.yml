@@ -40,6 +40,5 @@ jobs:
 
       # run tests!
       - run: gradle test
-      - run: gradle --version
       - run: gradle dependencyCheckAnalyze
       - run: curl -s https://codecov.io/bash | bash
