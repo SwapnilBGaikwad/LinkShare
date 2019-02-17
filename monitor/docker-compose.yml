@@ -35,6 +35,19 @@ services:
     networks:
       - esnet
 
+  lagstash:
+    image: docker.elastic.co/logstash/logstash:6.5.2
+    container_name: logstash
+    volumes:
+      - ./config/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./config/logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+    environment:
+      - "LS_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - 4000:4000
+    networks:
+      - esnet
+
   kibana:
     image: docker.elastic.co/kibana/kibana:6.5.2
     container_name: kibana
