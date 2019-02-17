@@ -14,8 +14,8 @@ ENV PATH $PATH:${FILEBEAT_HOME}
 WORKDIR /opt/
 RUN curl -sL ${FILEBEAT_URL} | tar xz -C .
 
-COPY artifact/LinkShare.jar /usr/local/appPath/LinkShare.jar
-COPY startup.sh /startup.sh
+COPY build/libs/LinkShare*.jar /usr/local/appPath/LinkShare.jar
+COPY docker/startup.sh /startup.sh
 
 WORKDIR /usr/local/appPath
 

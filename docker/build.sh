@@ -6,7 +6,4 @@ then
 	exit 1
 fi
 
-mkdir -p artifact
-cp -rf ../build/libs/LinkShare-*.jar artifact/LinkShare.jar
-
 docker build -t linkshare:1.0 .
