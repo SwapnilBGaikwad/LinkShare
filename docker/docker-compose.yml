@@ -6,11 +6,20 @@ services:
     image: linkshare:1.0
     ports:
       - 8080:8080
+    environment:
+      - REDIS_HOST=redis
     depends_on:
       - redis
+    networks:
+      - esnet
 
   redis:
     container_name: LSRedis
     image: redis:latest
     ports:
       - 6379:6379
+    networks:
+      - esnet
+
+networks:
+  esnet:
