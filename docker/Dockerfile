@@ -14,6 +14,7 @@ ENV PATH $PATH:${FILEBEAT_HOME}
 WORKDIR /opt/
 RUN curl -sL ${FILEBEAT_URL} | tar xz -C .
 
+COPY docker/filebeat/filebeat.yml ${FILEBEAT_HOME}/filebeat.yml
 COPY build/libs/LinkShare*.jar /usr/local/appPath/LinkShare.jar
 COPY docker/startup.sh /startup.sh
 
