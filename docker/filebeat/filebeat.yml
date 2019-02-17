@@ -25,5 +25,5 @@ logging:
   files:
     path: /var/log
     name: linksharelogs
-    rotateeverybytes: 10485760
+    rotateeverybytes: 6574578
   level: info
